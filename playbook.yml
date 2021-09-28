@@ -16,6 +16,11 @@
     ubtu20cis_skip_for_travis: false
     ubtu20cis_oscap_scan: yes
 
+- name: deploy webserver container
+  hosts: webserver
+  roles:
+  - role: webserver
+
 # - name: configure ansible-pull
 #   hosts: none
 #   roles:
