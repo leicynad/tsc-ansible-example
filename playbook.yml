@@ -4,17 +4,17 @@
         msg: "I'm in group 'test'"
 
 
--name: lockdown using CIS
- hosts: cissecure
+- name: lockdown using CIS
+  hosts: cissecure
 
- vars:
-  is_container: false
+  vars:
+    is_container: false
 
- roles:
-   - role: cissecure
-     ubtu20cis_system_is_container: "{{ is_container | default(false) }}"
-     ubtu20cis_skip_for_travis: false
-     ubtu20cis_oscap_scan: yes
+  roles:
+    - role: cissecure
+      ubtu20cis_system_is_container: "{{ is_container | default(false) }}"
+      ubtu20cis_skip_for_travis: false
+      ubtu20cis_oscap_scan: yes
 
 - name: configure ansible-pull
   hosts: none
