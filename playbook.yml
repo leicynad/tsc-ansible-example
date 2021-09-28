@@ -3,10 +3,6 @@
   - debug:
      msg: "I'm in group 'test'"
 
-- name: galaxy install requirements
-  hosts: galaxy-install
-  roles:
-  - role: galaxy-install
 
 - name: lockdown using CIS
   hosts: cissecure
@@ -23,6 +19,7 @@
 - name: deploy webserver container
   hosts: webserver
   roles:
+  - role: galaxyinstall
   - role: webserver
 
 # - name: configure ansible-pull
