@@ -6,8 +6,8 @@
     state: absent
 
 - name: launch galaxy role install
-  local_action:
-    command ansible-galaxy role install -r requirements.yml
+  delegate_to: localhost
+  command: command ansible-galaxy role install -r requirements.yml
 
 - name: gitignore galaxy role
   lineinfile:
@@ -22,8 +22,8 @@
     state: absent
 
 - name: launch galaxy collection install
-  local_action:
-    command ansible-galaxy collection install -r requirements.yml
+  delegate_to: localhost
+  command: command ansible-galaxy collection install -r requirements.yml
 
 - name: gitignore galaxy collection
   lineinfile:
