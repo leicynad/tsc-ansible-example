@@ -22,6 +22,7 @@ ansible_hosts = {}
 for entry in os.scandir(host_vars):
     if entry.name.endswith('.yml'):
         host = entry.name[:-4]
+        print("host " + host)
 
         yml = {}
         with open(entry.path, 'r') as stream:
@@ -30,6 +31,7 @@ for entry in os.scandir(host_vars):
         ansible_hosts[host] = { 'ansible_host': host }
         for group in yml.get('pull_groups', []):
             ansible_groups[group].append(host)
+            print("host" + host + "group" + group)
 
 parser = argparse.ArgumentParser(
     description='convert ansible-pull data into push inventory'
