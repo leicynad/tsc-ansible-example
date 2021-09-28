@@ -1,0 +1,28 @@
+---
+
+- file:
+  path:  galaxyroles
+  state: absent
+
+- local_action:
+  command ansible-galaxy role install -r requirements.yml
+
+- lineinfile:
+  dest:   .gitignore
+  regexp: '^\/galaxyroles$'
+  line:   '/galaxyroles'
+  state:  present
+
+
+- file:
+  path: ansible_collections
+  state: absent
+
+- local_action:
+  command ansible-galaxy collection install -r requirements.yml
+
+- lineinfile:
+  dest:   .gitignore
+  regexp: '^\/ansible_collections$'
+  line:   '/ansible_collections'
+  state:  present

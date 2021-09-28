@@ -3,6 +3,10 @@
   - debug:
      msg: "I'm in group 'test'"
 
+- name: galaxy install requirements
+  hosts: galaxy-install
+  roles:
+  - role: galaxy-install
 
 - name: lockdown using CIS
   hosts: cissecure

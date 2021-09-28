@@ -1,5 +1,6 @@
 ---
 
 pull_groups:
+  - galaxy-install
   - test
   - webserver
