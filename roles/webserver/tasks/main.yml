@@ -1,24 +1,23 @@
 ---
-- hosts: podman
-  tasks:
-  - name: installing podman
-    package:
-      name: "podman"
-      state: present
-  - name: Pull an image
-    containers.podman.podman_image:
-      name: httpd
-  - name: Add Keepalived config file
-    template:
-      dest: /var/www/index.html
-      src: index.html.j2
-  - name: create test container
-    containers.podman.podman_container:
-      name: testcontainer
-      image: httpd
-      state: started
-      detach: true
-      exposed_ports:
-        - 80
-      ports:
-        - 4444:80
+
+- name: installing podman
+  package:
+    name: "podman"
+    state: present
+- name: Pull an image
+  containers.podman.podman_image:
+    name: httpd
+- name: Add Keepalived config file
+  template:
+    dest: /var/www/index.html
+    src: index.html.j2
+- name: create test container
+  containers.podman.podman_container:
+    name: testcontainer
+    image: httpd
+    state: started
+    detach: true
+    exposed_ports:
+      - 80
+    ports:
+      - 80:80
