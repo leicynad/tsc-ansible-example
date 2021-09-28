@@ -1,7 +1,7 @@
 - hosts: test
   tasks:
-    - debug:
-        msg: "I'm in group 'test'"
+  - debug:
+     msg: "I'm in group 'test'"
 
 
 - name: lockdown using CIS
@@ -11,14 +11,14 @@
     is_container: false
 
   roles:
-    - role: cissecure
-      ubtu20cis_system_is_container: "{{ is_container | default(false) }}"
-      ubtu20cis_skip_for_travis: false
-      ubtu20cis_oscap_scan: yes
+  - role: cissecure
+    ubtu20cis_system_is_container: "{{ is_container | default(false) }}"
+    ubtu20cis_skip_for_travis: false
+    ubtu20cis_oscap_scan: yes
 
 - name: configure ansible-pull
   hosts: none
   roles:
-    - role: ansible-pull
-      ansible_pull:
-        url: https://github.com/leicynad/tsc-ansible-example.git
+  - role: ansible-pull
+    ansible_pull:
+      url: https://github.com/leicynad/tsc-ansible-example.git
