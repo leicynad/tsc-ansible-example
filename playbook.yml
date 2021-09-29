@@ -19,7 +19,6 @@
 - name: deploy webserver container
   hosts: webserver
   roles:
-  - role: galaxyinstall
   - role: webserver
 
 # - name: configure ansible-pull
