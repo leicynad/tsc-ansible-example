@@ -5,11 +5,12 @@
     name: "podman"
     state: present
 
-- lineinfile:
-  path: /etc/containers/registries.conf
-  regexp: '^unqualified-search-registries.*'
-  insertafter: '^# unqualified-search-registries.*'
-  line: 'unqualified-search-registries=["docker.io"]'
+- name: add registry
+  lineinfile:
+    path: /etc/containers/registries.conf
+    regexp: '^unqualified-search-registries.*'
+    insertafter: '^# unqualified-search-registries.*'
+    line: 'unqualified-search-registries=["docker.io"]'
 
 - name: Pull an image
   containers.podman.podman_image:
