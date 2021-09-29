@@ -4,13 +4,22 @@
   package:
     name: "podman"
     state: present
+
+- lineinfile:
+  path: /etc/containers/registries.conf
+  regexp: '^unqualified-search-registries.*'
+  insertafter: '^# unqualified-search-registries.*'
+  line: 'unqualified-search-registries=["docker.io"]'
+
 - name: Pull an image
   containers.podman.podman_image:
     name: httpd
+
 - name: Add Keepalived config file
   template:
     dest: /var/www/index.html
     src: index.html.j2
+
 - name: create test container
   containers.podman.podman_container:
     name: testcontainer
