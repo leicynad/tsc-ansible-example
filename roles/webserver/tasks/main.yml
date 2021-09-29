@@ -16,6 +16,11 @@
   containers.podman.podman_image:
     name: httpd
 
+- name: Creates directory
+  file:
+    path: /var/www
+    state: directory
+
 - name: Add Keepalived config file
   template:
     dest: /var/www/index.html
@@ -31,3 +36,4 @@
       - 80
     ports:
       - 80:80
+    volumes: /var/www/:/usr/local/apache2/htdocs/
